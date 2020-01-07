@@ -189,12 +189,27 @@ update_zone_master () {
   "${RootDir}"/script/reload.sh
 }
 
+
+CONF_DOMAIN_LIST=(
+  https://v.firebog.net/hosts/Easylist.txt
+  https://gist.githubusercontent.com/BBcan177/2a9fc2548c3c5a5e2dc86e580b5795d2/raw/2f5c90ffb3bd02199ace1b16a0bd9f53b29f0879/EasyList_DE
+)
+
+function wGetConfDomainList() {
+    local DOMAIN_LIST=();
+    for URL in "${CONF_DOMAIN_LIST[@]}"; do
+        DOMAIN_LIST+=$(wget -qO- $URL)
+    done
+    echo $DOMAIN_LIST | tr " " "\n" | sed "/^#/ d" > "${ConfDir}/ad-blocker-bl.conf"
+} 
+
 # Global vars for common paths
 ConfDir="/usr/local/etc"
 RootDir="/var/packages/DNSServer/target"
 ZoneDir="${RootDir}/named/etc/zone"
 ZoneDataDir="${ZoneDir}/data"
 ZoneMasterDir="${ZoneDir}/master"
+
 
 # Main Routine
 check_deps
