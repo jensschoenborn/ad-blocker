@@ -193,6 +193,7 @@ update_zone_master () {
 CONF_DOMAIN_LIST=(
   https://v.firebog.net/hosts/Easylist.txt
   https://gist.githubusercontent.com/BBcan177/2a9fc2548c3c5a5e2dc86e580b5795d2/raw/2f5c90ffb3bd02199ace1b16a0bd9f53b29f0879/EasyList_DE
+  https://raw.githubusercontent.com/deathbybandaid/piholeparser/master/Subscribable-Lists/CountryCodesLists/Germany.txt
 )
 
 function wGetConfDomainList() {
