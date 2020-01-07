@@ -216,6 +216,7 @@ check_deps
 check_conf
 check_user "$@"
 fetch_blocklist
+wGetConfDomainList
 apply_blacklist
 apply_whitelist
 update_zone_data
